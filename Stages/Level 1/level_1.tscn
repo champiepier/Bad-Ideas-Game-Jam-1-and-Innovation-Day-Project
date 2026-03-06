@@ -2,20 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://cobcla4wyuddv" path="res://Player/player.tscn" id="1_dmdco"]
 [ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://icon.svg" id="2_307pc"]
+[ext_resource type="Texture2D" uid="uid://0g0ys10w1ctb" path="res://100390458-79d5e300-3041-11eb-9a3a-43074ee52ad5.png" id="3_l8spx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_307pc"]
 size = Vector2(798.4942, 128)
 
 [node name="Level 1" type="Node2D" unique_id=1023495989]
 
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=16057543]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1731740631]
+texture = ExtResource("3_l8spx")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=207409732]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1311776274]
+scale = Vector2(5, 5)
+texture = ExtResource("2_307pc")
+
 [node name="Player" parent="." unique_id=1139155168 instance=ExtResource("1_dmdco")]
-position = Vector2(27, 335)
+position = Vector2(27, 144)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=621352929]
 remote_path = NodePath("../../Camera2D")
+update_rotation = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1706310803]
-position = Vector2(27, 335)
+position = Vector2(27, 144)
+ignore_rotation = false
 limit_left = 0
 limit_top = 0
 limit_bottom = 720
@@ -127,6 +145,110 @@ scale = Vector2(10.000001, 1)
 texture = ExtResource("2_307pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall10" unique_id=684740460]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall11" type="StaticBody2D" parent="Walls" unique_id=1455143103]
+position = Vector2(10752, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall11" unique_id=1169435703]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall11" unique_id=415487176]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall12" type="StaticBody2D" parent="Walls" unique_id=365222278]
+position = Vector2(12032, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall12" unique_id=166972271]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall12" unique_id=274389682]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall13" type="StaticBody2D" parent="Walls" unique_id=1000956177]
+position = Vector2(13312, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall13" unique_id=479858219]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall13" unique_id=2026709628]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall14" type="StaticBody2D" parent="Walls" unique_id=224798876]
+position = Vector2(14592, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall14" unique_id=1108865235]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall14" unique_id=568465318]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall15" type="StaticBody2D" parent="Walls" unique_id=184647425]
+position = Vector2(15872, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall15" unique_id=1541198437]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall15" unique_id=586885876]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall16" type="StaticBody2D" parent="Walls" unique_id=743235589]
+position = Vector2(17152, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall16" unique_id=759626212]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall16" unique_id=1090973684]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall17" type="StaticBody2D" parent="Walls" unique_id=829885435]
+position = Vector2(18432, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall17" unique_id=673508029]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall17" unique_id=370856012]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall18" type="StaticBody2D" parent="Walls" unique_id=329361551]
+position = Vector2(19712, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall18" unique_id=1474889329]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall18" unique_id=838985776]
 position = Vector2(127.69812, 0)
 scale = Vector2(1.6037734, 1)
 shape = SubResource("RectangleShape2D_307pc")

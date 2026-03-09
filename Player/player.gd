@@ -2,78 +2,81 @@ extends CharacterBody2D
 
 @onready var camera_2d: Camera2D = $"../Camera2D"
 
-@export var friction: float = 20.0
-@export var decay = 2.0
-@export var gravity = 150
+@export var gravity: float = 1500.0
+@export var friction: float = 10
+@export var decay: float = 10.0
 
-enum STATES {Crashed, Ball, Dart}
-
-var state = STATES.Dart
-
-var is_landing = false
+enum STATES {Ball, Normal}
+var state = STATES.Ball
 var current_frame: int = 0
-
-var momentum = 75.0
-var speed = 1000.0
-
-var momentum_loss_speed = 5
+var speed = 2000.0
+var just_touched_ground: bool = false
+var is_in_air: bool = false
+var can_change_states: bool = true
 
 func _physics_process(delta: float) -> void:
 	
 	get_position_points()
 	
-	match state:
-		STATES.Dart:
-			momentum_loss_speed = 10
-			handle_dart_movement(delta)
-		STATES.Ball:
-			momentum_loss_speed = 1
-			pass
-		STATES.Crashed:
-			pass
-			
-	if is_on_floor() and !is_landing:
-		is_landing = true
+	if is_on_floor() and !just_touched_ground:
+		just_touched_ground = true
 		Engine.time_scale = 0
-		await get_tree().create_timer(velocity.x/20000, true, false, true).timeout
+		print("oof")
+		await get_tree().create_timer(0.1, true, false, true).timeout
 		Engine.time_scale = 1
-		rotation = deg_to_rad(0)
-		camera_2d.rotation = deg_to_rad(0)
-		bounce_player()
 	elif !is_on_floor():
-		is_landing = false
+		just_touched_ground = false
+		
+	
+	match state:
+		STATES.Normal:
+			normal_movement(delta)
+		STATES.Ball:
+			ball_movement(delta)
 	
 	
-func handle_dart_movement(delta):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("action"):
+		if can_change_states:
+			if state == STATES.Normal:
+				state = STATES.Ball
+			else:
+				state = STATES.Normal
+				
+			can_change_states = false
+			$StateChangeCooldown.start()
 	
-	var input = Input.get_axis("ui_up", "ui_down")
+func normal_movement(delta):
+	
+	if velocity.x > 0:	
+		decay += 1
 	
 	if !is_on_floor():
-		velocity.y = gravity + 125 * input
+		velocity.y += gravity * delta
 	
-		rotation = lerp_angle(rotation, deg_to_rad(25*input), 0.1)
-		camera_2d.rotation = lerp_angle(camera_2d.rotation, deg_to_rad(-2.5*input), 0.1)
-		
-		velocity.x = round(((momentum / (friction + (deg_to_rad(rotation * 10)))) * speed) - decay)
-		
-		if velocity.x > 0:
-			decay += 1
-			
-	else:
-		velocity.x = move_toward(velocity.x, 0.0, momentum_loss_speed)
+	velocity.x = speed - decay
 	
 	move_and_slide()
 	
-func bounce_player():
-	match state:
-		STATES.Ball:
-			pass
-		STATES.Dart:
-			pass
+func ball_movement(delta):
+	
+	if velocity.x > 0:
+		decay += 0.5
+		
+	if !is_on_floor():
+		velocity.y += gravity * delta
+		
+	velocity.x = speed - decay
+	
+	move_and_slide()
 	
 func get_position_points():
 	current_frame += 1
 	
-	if current_frame == 10:
+	if current_frame >= 10:
 		Global.position_log.append(global_position)
 		current_frame = 0
+
+
+func _on_state_change_cooldown_timeout() -> void:
+	can_change_states = true

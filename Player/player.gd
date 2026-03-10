@@ -12,12 +12,12 @@ const BASE_BOUNCE_HEIGHT = -500.0
 
 var max_bounce = BASE_BOUNCE_HEIGHT * 2
 
-var bounce_height
+var momentum_percent = 75.0
 
 enum STATES {Ball, Normal}
 var state = STATES.Normal
 var current_frame: int = 0
-var speed = 2000.0
+var base_speed = 2000.0
 var just_touched_ground: bool = false
 var is_in_air: bool = false
 var can_change_states: bool = true
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and !just_touched_ground:
 		just_touched_ground = true
-		var speed_ratio = clamp(abs(velocity.x) / speed, 0.0, 1.0)
+		var speed_ratio = clamp(abs(velocity.x) / base_speed, 0.0, 1.0)
 		velocity.y = max_bounce * bounce_curve.sample(speed_ratio)
 	elif !is_on_floor():
 		just_touched_ground = false
@@ -39,6 +39,11 @@ func _physics_process(delta: float) -> void:
 			normal_movement(delta)
 		STATES.Ball:
 			ball_movement(delta)
+			
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+		
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):
@@ -53,25 +58,22 @@ func _input(event: InputEvent) -> void:
 	
 func normal_movement(delta):
 	
-	if velocity.x > 0:	
-		decay += 1
+	$anims.play("run")
 	
-	if !is_on_floor():
-		velocity.y += gravity * delta
+	momentum_percent = move_toward(momentum_percent, 0.0, 5.0 * delta)
 	
-	velocity.x = speed - decay
+	velocity.x = (momentum_percent / 100.0) * base_speed
+	
 	
 	move_and_slide()
 	
 func ball_movement(delta):
 	
-	if velocity.x > 0:
-		decay += 0.5
+	$anims.play("roll")
+	
+	momentum_percent = move_toward(momentum_percent, 0.0, 2.0 * delta)
 		
-	if !is_on_floor():
-		velocity.y += gravity * delta
-		
-	velocity.x = speed - decay
+	velocity.x = (momentum_percent / 100.0) * base_speed
 	
 	move_and_slide()
 	

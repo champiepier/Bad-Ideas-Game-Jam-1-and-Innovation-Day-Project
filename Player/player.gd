@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var decay: float = 10.0
 
 enum STATES {Ball, Normal}
-var state = STATES.Ball
+var state = STATES.Normal
 var current_frame: int = 0
 var speed = 2000.0
 var just_touched_ground: bool = false
@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		just_touched_ground = true
 		Engine.time_scale = 0
 		print("oof")
+		velocity.y = -100
 		await get_tree().create_timer(0.1, true, false, true).timeout
 		Engine.time_scale = 1
 	elif !is_on_floor():
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		STATES.Ball:
 			ball_movement(delta)
 	
+	print(velocity.y)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):

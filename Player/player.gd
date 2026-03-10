@@ -6,6 +6,14 @@ extends CharacterBody2D
 @export var friction: float = 10
 @export var decay: float = 10.0
 
+@export var bounce_curve: Curve
+
+const BASE_BOUNCE_HEIGHT = -500.0
+
+var max_bounce = BASE_BOUNCE_HEIGHT * 2
+
+var bounce_height
+
 enum STATES {Ball, Normal}
 var state = STATES.Normal
 var current_frame: int = 0
@@ -20,11 +28,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and !just_touched_ground:
 		just_touched_ground = true
-		Engine.time_scale = 0
-		print("oof")
-		velocity.y = -100
-		await get_tree().create_timer(0.1, true, false, true).timeout
-		Engine.time_scale = 1
+		var speed_ratio = clamp(abs(velocity.x) / speed, 0.0, 1.0)
+		velocity.y = max_bounce * bounce_curve.sample(speed_ratio)
 	elif !is_on_floor():
 		just_touched_ground = false
 		
@@ -34,8 +39,6 @@ func _physics_process(delta: float) -> void:
 			normal_movement(delta)
 		STATES.Ball:
 			ball_movement(delta)
-	
-	print(velocity.y)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):

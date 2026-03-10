@@ -3,11 +3,16 @@
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://icon.svg" id="1_l8h54"]
 
+[sub_resource type="Curve" id="Curve_4ntmi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.995, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
 radius = 24.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1139155168]
 script = ExtResource("1_4ntmi")
+bounce_curve = SubResource("Curve_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
 scale = Vector2(0.375, 0.375)

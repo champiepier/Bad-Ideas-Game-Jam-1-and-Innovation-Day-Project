@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @onready var camera_2d: Camera2D = $"../Camera2D"
+@onready var space_held_timer: Timer = $SpaceHeldTimer
 
 @export var gravity: float = 1500.0
 @export var friction: float = 10
-@export var decay: float = 10.0
+@export var decay: float = 0
 
 @export var bounce_curve: Curve
 
@@ -14,10 +15,12 @@ var max_bounce = BASE_BOUNCE_HEIGHT * 2
 
 var momentum_percent = 75.0
 
+var input_dir: float = 0
+
 enum STATES {Ball, Normal}
 var state = STATES.Normal
 var current_frame: int = 0
-var base_speed = 2000.0
+var base_speed = 5000.0
 var just_touched_ground: bool = false
 var is_in_air: bool = false
 var can_change_states: bool = true
@@ -28,8 +31,6 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and !just_touched_ground:
 		just_touched_ground = true
-		var speed_ratio = clamp(abs(velocity.x) / base_speed, 0.0, 1.0)
-		velocity.y = max_bounce * bounce_curve.sample(speed_ratio)
 	elif !is_on_floor():
 		just_touched_ground = false
 		
@@ -50,11 +51,11 @@ func _input(event: InputEvent) -> void:
 		if can_change_states:
 			if state == STATES.Normal:
 				state = STATES.Ball
-			else:
-				state = STATES.Normal
-				
 			can_change_states = false
 			$StateChangeCooldown.start()
+	
+	input_dir = Input.get_axis("up", "down")
+	rotation *= deg_to_rad(input_dir)
 	
 func normal_movement(delta):
 	
@@ -83,7 +84,6 @@ func get_position_points():
 	if current_frame >= 10:
 		Global.position_log.append(global_position)
 		current_frame = 0
-
-
+		
 func _on_state_change_cooldown_timeout() -> void:
 	can_change_states = true

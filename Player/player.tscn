@@ -131,4 +131,6 @@ wait_time = 0.25
 [node name="anims" type="AnimationPlayer" parent="." unique_id=269493923]
 libraries/ = SubResource("AnimationLibrary_vtle1")
 
+[node name="SpaceHeldTimer" type="Timer" parent="." unique_id=2026786044]
+
 [connection signal="timeout" from="StateChangeCooldown" to="." method="_on_state_change_cooldown_timeout"]

@@ -26,7 +26,7 @@ texture = ExtResource("2_307pc")
 
 [node name="Player" parent="." unique_id=1139155168 instance=ExtResource("1_dmdco")]
 position = Vector2(27, 144)
-gravity = 200.0
+gravity = 800.0
 friction = 10.0
 decay = 0.0
 
@@ -40,7 +40,6 @@ position = Vector2(392, 144)
 ignore_rotation = false
 zoom = Vector2(1.25, 1.25)
 limit_left = 0
-limit_top = 0
 limit_bottom = 720
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
@@ -124,6 +123,20 @@ scale = Vector2(10.000001, 1)
 texture = ExtResource("2_307pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall8" unique_id=591795524]
+position = Vector2(127.69812, 0)
+scale = Vector2(1.6037734, 1)
+shape = SubResource("RectangleShape2D_307pc")
+
+[node name="TestWall19" type="StaticBody2D" parent="Walls" unique_id=1894265450]
+position = Vector2(6912, 275.00024)
+rotation = -0.7853982
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall19" unique_id=870227248]
+position = Vector2(128.00009, 0)
+scale = Vector2(10.000001, 1)
+texture = ExtResource("2_307pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall19" unique_id=1877487385]
 position = Vector2(127.69812, 0)
 scale = Vector2(1.6037734, 1)
 shape = SubResource("RectangleShape2D_307pc")
@@ -254,19 +267,6 @@ scale = Vector2(10.000001, 1)
 texture = ExtResource("2_307pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall18" unique_id=838985776]
-position = Vector2(127.69812, 0)
-scale = Vector2(1.6037734, 1)
-shape = SubResource("RectangleShape2D_307pc")
-
-[node name="TestWall2" type="StaticBody2D" parent="Walls" unique_id=1035449710]
-position = Vector2(512, -64)
-
-[node name="Sprite2D" type="Sprite2D" parent="Walls/TestWall2" unique_id=277715486]
-position = Vector2(128.00009, 0)
-scale = Vector2(10.000001, 1)
-texture = ExtResource("2_307pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TestWall2" unique_id=1460710220]
 position = Vector2(127.69812, 0)
 scale = Vector2(1.6037734, 1)
 shape = SubResource("RectangleShape2D_307pc")

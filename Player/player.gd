@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var space_held_timer: Timer = $SpaceHeldTimer
 
-@export var gravity: float = 200.0
+@export var gravity: float = 800.0
 @export var friction: float = 10
 @export var decay: float = 0
 
@@ -63,6 +63,9 @@ func _input(event: InputEvent) -> void:
 				state = STATES.Ball
 			can_change_states = false
 			$StateChangeCooldown.start()
+			
+	if event.is_action_released("dash"):
+		position = position.move_toward(position + Vector2(25, 25), 0.5)
 	
 func normal_movement(delta):
 	

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cobcla4wyuddv"]
 
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://icon.svg" id="1_l8h54"]
-[ext_resource type="Texture2D" uid="uid://c5gnl1oxi5is" path="res://icon-ball.png" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://Assets/icon.svg" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://c5gnl1oxi5is" path="res://Assets/icon-ball.png" id="3_btcbx"]
 
 [sub_resource type="Curve" id="Curve_4ntmi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -116,6 +116,9 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1139155168]
 script = ExtResource("1_4ntmi")
+gravity = null
+friction = null
+decay = null
 bounce_curve = SubResource("Curve_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
@@ -132,5 +135,6 @@ wait_time = 0.25
 libraries/ = SubResource("AnimationLibrary_vtle1")
 
 [node name="SpaceHeldTimer" type="Timer" parent="." unique_id=2026786044]
+wait_time = 0.25
 
 [connection signal="timeout" from="StateChangeCooldown" to="." method="_on_state_change_cooldown_timeout"]

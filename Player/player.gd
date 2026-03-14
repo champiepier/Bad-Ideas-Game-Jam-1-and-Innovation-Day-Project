@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var space_held_timer: Timer = $SpaceHeldTimer
 
-@export var gravity: float = 1500.0
+@export var gravity: float = 200.0
 @export var friction: float = 10
 @export var decay: float = 0
 
@@ -16,6 +16,8 @@ var max_bounce = BASE_BOUNCE_HEIGHT * 2
 var momentum_percent = 75.0
 
 var input_dir: float = 0
+
+var is_holding_space: bool = false
 
 enum STATES {Ball, Normal}
 var state = STATES.Normal
@@ -33,7 +35,6 @@ func _physics_process(delta: float) -> void:
 		just_touched_ground = true
 	elif !is_on_floor():
 		just_touched_ground = false
-		
 	
 	match state:
 		STATES.Normal:
@@ -41,10 +42,19 @@ func _physics_process(delta: float) -> void:
 		STATES.Ball:
 			ball_movement(delta)
 			
+	
+	if !is_on_floor():		
+		input_dir = Input.get_axis("up", "down")
+		rotation = lerp_angle(deg_to_rad(rotation), deg_to_rad(input_dir * 25), 0.5)
+	else:
+		rotation = 0.0
+	
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += (gravity * delta)
 		
-		
+	print(velocity)
+	
+	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):
@@ -54,29 +64,22 @@ func _input(event: InputEvent) -> void:
 			can_change_states = false
 			$StateChangeCooldown.start()
 	
-	input_dir = Input.get_axis("up", "down")
-	rotation *= deg_to_rad(input_dir)
-	
 func normal_movement(delta):
 	
-	$anims.play("run")
-	
-	momentum_percent = move_toward(momentum_percent, 0.0, 5.0 * delta)
+	$Sprite2D.texture = load("res://Assets/icon.svg")
 	
 	velocity.x = (momentum_percent / 100.0) * base_speed
+	momentum_percent += deg_to_rad(rotation)
 	
-	
-	move_and_slide()
+	if just_touched_ground:
+		momentum_percent = move_toward(momentum_percent, 0.0, 0.5)
 	
 func ball_movement(delta):
 	
-	$anims.play("roll")
-	
-	momentum_percent = move_toward(momentum_percent, 0.0, 2.0 * delta)
+	$Sprite2D.texture = load("res://Assets/icon-ball.png")
 		
 	velocity.x = (momentum_percent / 100.0) * base_speed
-	
-	move_and_slide()
+	momentum_percent += deg_to_rad(rotation)
 	
 func get_position_points():
 	current_frame += 1

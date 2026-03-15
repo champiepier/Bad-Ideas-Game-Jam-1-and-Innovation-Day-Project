@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @onready var ball_text: CompressedTexture2D = preload("res://Assets/icon-ball.png")
@@ -66,7 +67,6 @@ func _input(event: InputEvent) -> void:
 				state = STATES.Normal
 			can_change_states = false
 			$StateChangeCooldown.start()
-
 	
 func normal_movement(delta):
 	

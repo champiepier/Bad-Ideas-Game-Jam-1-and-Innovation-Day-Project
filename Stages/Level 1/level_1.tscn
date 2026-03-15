@@ -33,6 +33,7 @@ remote_path = NodePath("../../Camera2D")
 update_rotation = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1706310803]
+offset = Vector2(-16, -16)
 zoom = Vector2(1.25, 1.25)
 limit_left = 0
 limit_bottom = 720

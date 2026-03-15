@@ -3,14 +3,15 @@ extends CharacterBody2D
 @onready var ball_text: CompressedTexture2D = preload("res://Assets/icon-ball.png")
 @onready var norm_text: CompressedTexture2D = preload("res://Assets/icon.svg")
 
-@export var gravity: float = 800.0
+@export var up_gravity: float = 800.0
+@export var down_gravity: float = 900.0
 
 @export var base_speed := 1500.0
-@export var base_jump := -750.0
 @export var base_tilt := deg_to_rad(30)
 
+@onready var base_jump := -600.0
+
 @export var friction := 1000.0
-@export var acceleration := 1000.0
 
 @export var state: STATES = STATES.Normal
 
@@ -36,22 +37,23 @@ func _physics_process(delta: float) -> void:
 			
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = move_toward(velocity.x, direction * base_speed, delta * acceleration)
+		velocity.x = move_toward(velocity.x, direction * base_speed, delta * friction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		
-	if !is_on_floor():
-		var tilt_dir = Input.get_axis("up", "down")
-		var target_dir = tilt_dir * base_tilt
-		rotation = lerp_angle(rotation, target_dir, 0.1)
-	else:
-		rotation = lerp_angle(rotation, 0, 0.5)
-		
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if velocity.y <= 0:
+			velocity.y += up_gravity * delta
+		else:
+			velocity.y += down_gravity * delta
+			
+	if state == STATES.Normal:
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = base_jump
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = base_jump
+		elif Input.is_action_just_released("jump") and velocity.y < 0.0:
+			velocity.y *= 0.6
+		
 		
 	move_and_slide()
 	
@@ -69,14 +71,12 @@ func _input(event: InputEvent) -> void:
 func normal_movement(delta):
 	
 	base_speed = 1500
-	friction = 1000
-	acceleration = 1000
+	friction = 3500
 	
 func ball_movement(delta):
 	
-	base_speed = 3000
-	friction = 500
-	acceleration = 2000
+	base_speed = 2000
+	friction = 750
 		
 func _on_state_change_cooldown_timeout() -> void:
 	can_change_states = true

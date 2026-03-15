@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 	check_just_touched_ground()
 	handle_movement(delta)
 	apply_gravity(delta)
+	
+	Global.state_change_time_left = $StateChangeCooldown.time_left
 		
 	move_and_slide()
 	

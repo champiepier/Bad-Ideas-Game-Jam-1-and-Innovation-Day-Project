@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjqnvb3jqqffc"
-path="res://.godot/imported/AGL Normal - PH.png-04651f47aed55aa4ef9896c70d53fb21.ctex"
+uid="uid://bxg1pgdrq8ib"
+path="res://.godot/imported/Player - Ball.png-8617f12c6e4ec87389e5ecd80575956c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/AGL Normal - PH.png"
-dest_files=["res://.godot/imported/AGL Normal - PH.png-04651f47aed55aa4ef9896c70d53fb21.ctex"]
+source_file="res://Assets/PlaceHolder/Art/Player - Ball.png"
+dest_files=["res://.godot/imported/Player - Ball.png-8617f12c6e4ec87389e5ecd80575956c.ctex"]
 
 [params]
 

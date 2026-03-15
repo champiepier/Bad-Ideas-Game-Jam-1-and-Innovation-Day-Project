@@ -14,7 +14,7 @@ config/name="Bad Ideas Jam 1"
 run/main_scene="uid://o88lc3u860et"
 config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=120
-config/icon="res://Assets/icon.svg"
+config/icon="res://Assets/Godot/icon.svg"
 
 [autoload]
 
@@ -59,10 +59,7 @@ attack={
 
 [physics]
 
-common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
-2d/default_gravity=1500.0
-common/physics_interpolation=true
 
 [rendering]
 

@@ -2,6 +2,8 @@ extends Node
 
 var current_frame: int = 0
 
+var state_change_time_left: float = 0.0
+
 var position_log: PackedVector2Array = PackedVector2Array()
 		
 func get_position_points(tracked_obj):

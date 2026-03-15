@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://n6bxbbdrcya3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxmp4"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 6
+
+[node name="GUI" type="Control" unique_id=1408405422]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1461250593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBarContainer" type="MarginContainer" parent="MarginContainer" unique_id=1504124742]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 677
+
+[node name="CanChangeAgainBar" type="ProgressBar" parent="MarginContainer/ProgressBarContainer" unique_id=431406815]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_styles/fill = SubResource("StyleBoxFlat_nxmp4")
+max_value = 5.0
+value = 2.6
+fill_mode = 1

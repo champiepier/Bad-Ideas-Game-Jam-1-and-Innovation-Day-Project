@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c352dwqsunyo6"
-path="res://.godot/imported/AGL Ball - PH.png-90a26f939db51052a01b6c50b0f7be5e.ctex"
+uid="uid://0g0ys10w1ctb"
+path="res://.godot/imported/100390458-79d5e300-3041-11eb-9a3a-43074ee52ad5.png-a9602a9d5a1523008f81817caa1909f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/AGL Ball - PH.png"
-dest_files=["res://.godot/imported/AGL Ball - PH.png-90a26f939db51052a01b6c50b0f7be5e.ctex"]
+source_file="res://Assets/Godot/100390458-79d5e300-3041-11eb-9a3a-43074ee52ad5.png"
+dest_files=["res://.godot/imported/100390458-79d5e300-3041-11eb-9a3a-43074ee52ad5.png-a9602a9d5a1523008f81817caa1909f1.ctex"]
 
 [params]
 

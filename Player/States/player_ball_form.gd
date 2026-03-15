@@ -13,7 +13,7 @@ func _enter_state() -> void:
 	base_speed = 2500
 	base_jump = 0.0
 	friction = 750
-
+	
 func _exit_state() -> void:
 	set_physics_process(false)
 	

@@ -8,7 +8,7 @@ var friction: float
 signal state_finished
 
 func _enter_state() -> void:
-	print("Entering State")
+	pass
 	
 func _exit_state() -> void:
-	print("Exiting State")
+	pass

@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cobcla4wyuddv"]
 
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://Assets/icon.svg" id="1_l8h54"]
-[ext_resource type="Texture2D" uid="uid://c352dwqsunyo6" path="res://Assets/Player/AGL Ball - PH.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://Assets/Godot/icon.svg" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://bxg1pgdrq8ib" path="res://Assets/PlaceHolder/Art/Player - Ball.png" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://pkwbeb5ruybb" path="res://Miscellaneous/State Machine/finite_state_machine.gd" id="4_gwnis"]
-[ext_resource type="Texture2D" uid="uid://cjqnvb3jqqffc" path="res://Assets/Player/AGL Normal - PH.png" id="4_od3ui"]
+[ext_resource type="Texture2D" uid="uid://cwq143i4mhkii" path="res://Assets/PlaceHolder/Art/Player - Norm.png" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://cwsaklnteo3kn" path="res://Player/States/player_normal_form.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://dhi7nx717d5g3" path="res://Player/States/player_ball_form.gd" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtle1"]
-radius = 12.0
-height = 72.0
+radius = 16.0
+height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtle1"]
-radius = 24.083189
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 length = 0.001
@@ -32,19 +32,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("CollisionNormal:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.375, 0.375)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionNormal:disabled")
+tracks/2/path = NodePath("CollisionBall:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -56,14 +56,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionBall:disabled")
+tracks/3/path = NodePath("Sprite2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_k53q1"]
@@ -159,7 +159,6 @@ _data = {
 script = ExtResource("1_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
-scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_l8h54")
 
 [node name="CollisionNormal" type="CollisionShape2D" parent="." unique_id=13867306]
@@ -170,7 +169,11 @@ shape = SubResource("CapsuleShape2D_vtle1")
 rotation = -1.5707964
 shape = SubResource("CircleShape2D_vtle1")
 
+[node name="BelowPlayerCast" type="RayCast2D" parent="." unique_id=1367892926]
+target_position = Vector2(0, 40)
+
 [node name="StateChangeCooldown" type="Timer" parent="." unique_id=1513771070]
+wait_time = 5.0
 one_shot = true
 
 [node name="anims" type="AnimationPlayer" parent="." unique_id=269493923]

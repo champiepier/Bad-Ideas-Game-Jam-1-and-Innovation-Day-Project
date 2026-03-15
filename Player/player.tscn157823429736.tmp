@@ -2,18 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://bngfsbfnr3hkh" path="res://Assets/icon.svg" id="1_l8h54"]
-[ext_resource type="Texture2D" uid="uid://c352dwqsunyo6" path="res://Assets/Player/AGL Ball - PH.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://c5gnl1oxi5is" path="res://Assets/icon-ball.png" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://pkwbeb5ruybb" path="res://Miscellaneous/State Machine/finite_state_machine.gd" id="4_gwnis"]
-[ext_resource type="Texture2D" uid="uid://cjqnvb3jqqffc" path="res://Assets/Player/AGL Normal - PH.png" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://cwsaklnteo3kn" path="res://Player/States/player_normal_form.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://dhi7nx717d5g3" path="res://Player/States/player_ball_form.gd" id="6_fhl08"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtle1"]
-radius = 12.0
-height = 72.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vtle1"]
-radius = 24.083189
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 length = 0.001
@@ -41,30 +36,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.375, 0.375)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionNormal:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionBall:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_k53q1"]
 resource_name = "roll"
@@ -80,31 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_vtle1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionNormal:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionBall:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [ExtResource("3_btcbx")]
 }
 
 [sub_resource type="Animation" id="Animation_fhl08"]
@@ -121,31 +68,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_od3ui")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionNormal:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionBall:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [ExtResource("1_l8h54")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vtle1"]
@@ -157,24 +80,27 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1139155168]
 script = ExtResource("1_4ntmi")
+up_gravity = null
+down_gravity = null
+base_speed = null
+base_tilt = null
+friction = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_l8h54")
 
-[node name="CollisionNormal" type="CollisionShape2D" parent="." unique_id=13867306]
-rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_vtle1")
-
-[node name="CollisionBall" type="CollisionShape2D" parent="." unique_id=689972360]
-rotation = -1.5707964
-shape = SubResource("CircleShape2D_vtle1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13867306]
+shape = SubResource("CircleShape2D_4ntmi")
 
 [node name="StateChangeCooldown" type="Timer" parent="." unique_id=1513771070]
-one_shot = true
+wait_time = 0.25
 
 [node name="anims" type="AnimationPlayer" parent="." unique_id=269493923]
 libraries/ = SubResource("AnimationLibrary_vtle1")
+
+[node name="SpaceHeldTimer" type="Timer" parent="." unique_id=2026786044]
+wait_time = 0.25
 
 [node name="FiniteStateMachine" type="Node" parent="." unique_id=1285105566 node_paths=PackedStringArray("state")]
 script = ExtResource("4_gwnis")

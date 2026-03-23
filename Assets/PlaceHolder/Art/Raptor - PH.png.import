@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6v7oibaqv4gr"
-path="res://.godot/imported/gradient.png-168f80e75446ea684149cd2611d83ca1.ctex"
+uid="uid://dt5ohtttu48c7"
+path="res://.godot/imported/Raptor - PH.png-bb637ec26c4485709429c8c72a8cadf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceHolder/Art/gradient.png"
-dest_files=["res://.godot/imported/gradient.png-168f80e75446ea684149cd2611d83ca1.ctex"]
+source_file="res://Assets/PlaceHolder/Art/Raptor - PH.png"
+dest_files=["res://.godot/imported/Raptor - PH.png-bb637ec26c4485709429c8c72a8cadf6.ctex"]
 
 [params]
 

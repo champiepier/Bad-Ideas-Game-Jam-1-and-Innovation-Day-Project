@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cobcla4wyuddv" path="res://Player/player.tscn" id="3_77ua0"]
 [ext_resource type="Texture2D" uid="uid://d0bd35w1r8mnc" path="res://Assets/PlaceHolder/Art/block_blue.png" id="3_ejdin"]
-[ext_resource type="Script" uid="uid://dy3rjrc8jk02x" path="res://Stages/World  1/manager_world_1.gd" id="4_a8jto"]
+[ext_resource type="Script" uid="uid://dy3rjrc8jk02x" path="res://Worlds/Desert World/manager_world_1.gd" id="4_a8jto"]
 [ext_resource type="PackedScene" uid="uid://n6bxbbdrcya3" path="res://UI/gui.tscn" id="4_jcmev"]
 [ext_resource type="Texture2D" uid="uid://cjvyyraytibvn" path="res://Assets/PlaceHolder/Art/PlaceHolder Tile.png" id="4_r68u1"]
 [ext_resource type="AudioStream" uid="uid://cekeum0oblan2" path="res://Assets/PlaceHolder/dragon-studio-desert-sand-dunes-482890.mp3" id="6_tchsd"]

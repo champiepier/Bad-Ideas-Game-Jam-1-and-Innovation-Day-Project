@@ -8,4 +8,5 @@ func _ready() -> void:
 
 func _on_eat_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		body.eat_food(food_type.speed_boost, food_type.speed_boost_time)
 		queue_free()

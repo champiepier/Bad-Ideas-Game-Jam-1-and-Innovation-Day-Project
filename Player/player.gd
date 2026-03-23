@@ -8,12 +8,16 @@ extends CharacterBody2D
 @export var up_gravity: float = 800.0
 @export var down_gravity: float = 900.0
 
+var speed: float
+
 var just_touched_ground: bool = false
 var can_change_states: bool = true
 
 func _ready() -> void:
 	if fsm:
 		fsm.change_state(player_normal_form)
+		
+	speed = fsm.state.base_speed
 
 func _physics_process(delta: float) -> void:
 	
@@ -46,7 +50,8 @@ func check_just_touched_ground():
 func handle_movement(delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = move_toward(velocity.x, direction * fsm.state.base_speed, delta * fsm.state.friction)
+		print(velocity.x)
+		velocity.x = move_toward(velocity.x, direction * speed, delta * fsm.state.friction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, fsm.state.friction * delta)
 		
@@ -59,6 +64,11 @@ func apply_gravity(delta):
 			velocity.y += up_gravity * delta
 		else:
 			velocity.y += down_gravity * delta
+		
+func eat_food(boost: float, duration: float):
+	speed = (boost * fsm.state.base_speed)
+	await get_tree().create_timer(duration).timeout
+	speed = fsm.state.base_speed
 		
 func _on_state_change_cooldown_timeout() -> void:
 	can_change_states = true

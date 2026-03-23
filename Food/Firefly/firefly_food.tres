@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_pbxke")
-speed_boost = 1.5
+speed_boost = 2.0
 speed_boost_time = 2.0
 sprite = ExtResource("2_lb34o")
 metadata/_custom_type_script = "uid://oy317uugiuti"

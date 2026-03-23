@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://cobcla4wyuddv"]
 
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://bxg1pgdrq8ib" path="res://Assets/PlaceHolder/Art/Player - Ball.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://dnfm2tno7am7n" path="res://Player/Player - Ball PH.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://brt5w226sswij" path="res://Player/Player - Normal PH.png" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://pkwbeb5ruybb" path="res://Miscellaneous/State Machine/finite_state_machine.gd" id="4_gwnis"]
-[ext_resource type="Texture2D" uid="uid://cwq143i4mhkii" path="res://Assets/PlaceHolder/Art/Player - Norm.png" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://cwsaklnteo3kn" path="res://Player/States/player_normal_form.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://dhi7nx717d5g3" path="res://Player/States/player_ball_form.gd" id="6_fhl08"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fhl08"]
+load_path = "res://.godot/imported/Player - Norm.png-40d42137c8119f86c842ecb1d639215d.ctex"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtle1"]
-radius = 16.0
-height = 64.0
+radius = 24.0
+height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtle1"]
 radius = 32.0
@@ -26,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_od3ui")]
+"values": [SubResource("CompressedTexture2D_fhl08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -120,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_od3ui")]
+"values": [ExtResource("4_00tjw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -158,7 +161,7 @@ _data = {
 script = ExtResource("1_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
-texture = ExtResource("4_od3ui")
+texture = SubResource("CompressedTexture2D_fhl08")
 
 [node name="CollisionNormal" type="CollisionShape2D" parent="." unique_id=13867306]
 rotation = -1.5707964

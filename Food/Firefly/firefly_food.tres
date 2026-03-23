@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FoodTypes" format=3 uid="uid://wg003smjbsh8"]
+
+[ext_resource type="Script" uid="uid://oy317uugiuti" path="res://Food/FoodTypesResource.gd" id="1_pbxke"]
+[ext_resource type="Texture2D" uid="uid://bfr6wi6l1cu1u" path="res://Food/Firefly/Firefly - PH.png" id="2_lb34o"]
+
+[resource]
+script = ExtResource("1_pbxke")
+speed_boost = 1.5
+speed_boost_time = 2.0
+sprite = ExtResource("2_lb34o")
+metadata/_custom_type_script = "uid://oy317uugiuti"

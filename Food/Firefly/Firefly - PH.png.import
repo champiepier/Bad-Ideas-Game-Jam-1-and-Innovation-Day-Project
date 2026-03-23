@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwq143i4mhkii"
-path="res://.godot/imported/Player - Norm.png-40d42137c8119f86c842ecb1d639215d.ctex"
+uid="uid://bfr6wi6l1cu1u"
+path="res://.godot/imported/Firefly - PH.png-7b42adcde9e59c13ffb4e50dd388d0b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceHolder/Art/Player - Norm.png"
-dest_files=["res://.godot/imported/Player - Norm.png-40d42137c8119f86c842ecb1d639215d.ctex"]
+source_file="res://Food/Firefly/Firefly - PH.png"
+dest_files=["res://.godot/imported/Firefly - PH.png-7b42adcde9e59c13ffb4e50dd388d0b4.ctex"]
 
 [params]
 

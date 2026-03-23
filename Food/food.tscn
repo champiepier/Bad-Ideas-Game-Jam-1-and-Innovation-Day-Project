@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dhp1jeu1wmttg"]
+
+[ext_resource type="Script" uid="uid://4fh6qejib26n" path="res://Food/food.gd" id="1_2g434"]
+[ext_resource type="Texture2D" uid="uid://bfr6wi6l1cu1u" path="res://Food/Firefly/Firefly - PH.png" id="2_r4kks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yvws"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4kks"]
+radius = 24.0
+
+[node name="Food" type="CharacterBody2D" unique_id=9289120]
+script = ExtResource("1_2g434")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328540536]
+texture = ExtResource("2_r4kks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117486633]
+shape = SubResource("CircleShape2D_4yvws")
+disabled = true
+
+[node name="EatArea" type="Area2D" parent="." unique_id=1357909037]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EatArea" unique_id=2122799393]
+shape = SubResource("CircleShape2D_r4kks")
+
+[node name="EffectDuration" type="Timer" parent="." unique_id=437719835]
+
+[connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]

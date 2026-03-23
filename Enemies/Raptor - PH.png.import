@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfr6wi6l1cu1u"
-path="res://.godot/imported/Firefly - PH.png-9002ef64579bdc16a444acb2448dc28a.ctex"
+uid="uid://dt5ohtttu48c7"
+path="res://.godot/imported/Raptor - PH.png-da83937983801a7349334b7c61a14dfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceHolder/Art/Firefly - PH.png"
-dest_files=["res://.godot/imported/Firefly - PH.png-9002ef64579bdc16a444acb2448dc28a.ctex"]
+source_file="res://Enemies/Raptor - PH.png"
+dest_files=["res://.godot/imported/Raptor - PH.png-da83937983801a7349334b7c61a14dfc.ctex"]
 
 [params]
 

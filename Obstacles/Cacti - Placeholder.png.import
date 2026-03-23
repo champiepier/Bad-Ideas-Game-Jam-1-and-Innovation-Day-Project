@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0bd35w1r8mnc"
-path="res://.godot/imported/block_blue.png-d49e710240bd5f3096c1c7f065a7edc9.ctex"
+uid="uid://d2wo6nepk601t"
+path="res://.godot/imported/Cacti - Placeholder.png-f883d59926a21e2a7169a0aebf5341b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PlaceHolder/Art/block_blue.png"
-dest_files=["res://.godot/imported/block_blue.png-d49e710240bd5f3096c1c7f065a7edc9.ctex"]
+source_file="res://Obstacles/Cacti - Placeholder.png"
+dest_files=["res://.godot/imported/Cacti - Placeholder.png-f883d59926a21e2a7169a0aebf5341b4.ctex"]
 
 [params]
 

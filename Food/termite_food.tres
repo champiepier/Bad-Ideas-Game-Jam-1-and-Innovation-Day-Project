@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FoodTypes" format=3 uid="uid://u1d52g7pa7"]
+
+[ext_resource type="Script" uid="uid://oy317uugiuti" path="res://Food/FoodTypesResource.gd" id="1_obcaw"]
+
+[resource]
+script = ExtResource("1_obcaw")
+speed_boost = 3.5
+speed_boost_time = 2.5
+metadata/_custom_type_script = "uid://oy317uugiuti"

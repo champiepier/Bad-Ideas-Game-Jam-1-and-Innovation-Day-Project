@@ -12,7 +12,7 @@ func _enter_state() -> void:
 	animator.play("run")
 	base_speed = 1500
 	base_jump = -600.0
-	friction = 3500
+	friction = 5000
 
 func _exit_state() -> void:
 	set_physics_process(false)

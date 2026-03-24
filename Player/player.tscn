@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cobcla4wyuddv"]
 
 [ext_resource type="Script" uid="uid://bqa1a83mvjkp8" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="AudioStream" uid="uid://csq3p4t8luanx" path="res://Assets/SFX/freesound_community-carrotnom-92106.mp3" id="2_vtle1"]
 [ext_resource type="Texture2D" uid="uid://dnfm2tno7am7n" path="res://Player/Player - Ball PH.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://brt5w226sswij" path="res://Player/Player - Normal PH.png" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://pkwbeb5ruybb" path="res://Miscellaneous/State Machine/finite_state_machine.gd" id="4_gwnis"]
@@ -157,8 +158,12 @@ _data = {
 &"run": SubResource("Animation_fhl08")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_od3ui"]
+radius = 32.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1139155168]
 script = ExtResource("1_4ntmi")
+bug_eat_sfx = ExtResource("2_vtle1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986784629]
 texture = SubResource("CompressedTexture2D_fhl08")
@@ -197,5 +202,11 @@ script = ExtResource("6_fhl08")
 actor = NodePath("../..")
 animator = NodePath("../../anims")
 metadata/_custom_type_script = "uid://dhi7nx717d5g3"
+
+[node name="PlayerHead" type="Area2D" parent="." unique_id=924013532 groups=["CanEatBug"]]
+position = Vector2(40, 0)
+
+[node name="PlayerHeadCollision" type="CollisionShape2D" parent="PlayerHead" unique_id=377950607 groups=["CanEatBug"]]
+shape = SubResource("CircleShape2D_od3ui")
 
 [connection signal="timeout" from="StateChangeCooldown" to="." method="_on_state_change_cooldown_timeout"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4fh6qejib26n" path="res://Food/food.gd" id="1_2g434"]
 [ext_resource type="Texture2D" uid="uid://bfr6wi6l1cu1u" path="res://Food/Firefly/Firefly - PH.png" id="2_r4kks"]
+[ext_resource type="AudioStream" uid="uid://d0j6d8l1o5rvt" path="res://Assets/SFX/dragon-studio-cicada-buzzing-331499.mp3" id="3_acobj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yvws"]
 
@@ -25,4 +26,9 @@ shape = SubResource("CircleShape2D_r4kks")
 
 [node name="EffectDuration" type="Timer" parent="." unique_id=437719835]
 
-[connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]
+[node name="BugSFX" type="AudioStreamPlayer2D" parent="." unique_id=1917519206]
+stream = ExtResource("3_acobj")
+autoplay = true
+parameters/looping = true
+
+[connection signal="area_entered" from="EatArea" to="." method="_on_eat_area_area_entered"]

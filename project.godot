@@ -15,6 +15,7 @@ run/main_scene="uid://o88lc3u860et"
 config/features=PackedStringArray("4.6", "Mobile")
 run/max_fps=120
 config/icon="res://Assets/Godot/icon.svg"
+config/tags=PackedStringArray("2d", "demo")
 
 [autoload]
 

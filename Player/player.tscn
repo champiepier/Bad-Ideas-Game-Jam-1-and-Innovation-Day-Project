@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://dhi7nx717d5g3" path="res://Player/States/player_ball_form.gd" id="6_fhl08"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fhl08"]
-load_path = "res://.godot/imported/Player - Norm.png-40d42137c8119f86c842ecb1d639215d.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtle1"]
 radius = 24.0
@@ -175,9 +174,6 @@ shape = SubResource("CapsuleShape2D_vtle1")
 [node name="CollisionBall" type="CollisionShape2D" parent="." unique_id=689972360]
 rotation = -1.5707964
 shape = SubResource("CircleShape2D_vtle1")
-
-[node name="BelowPlayerCast" type="RayCast2D" parent="." unique_id=1367892926]
-target_position = Vector2(0, 40)
 
 [node name="StateChangeCooldown" type="Timer" parent="." unique_id=1513771070]
 wait_time = 5.0
